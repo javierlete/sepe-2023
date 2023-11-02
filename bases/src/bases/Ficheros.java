@@ -8,28 +8,45 @@ import java.util.Scanner;
 
 public class Ficheros {
 
-	public static void main(String[] args) throws IOException {
-		FileWriter fw = new FileWriter("ejemplo.txt");
-		PrintWriter pw = new PrintWriter(fw);
-		
-		pw.println("Hola");
-		pw.println("Prueba");
-		
-		pw.close();
-		fw.close();
-		
-		FileReader fr = new FileReader("ejemplo.txt");
-		Scanner sc = new Scanner(fr);
-		
-		String linea;
-		
-		while(sc.hasNextLine()) {
-			linea = sc.nextLine();
-			System.out.println(linea);
+	public static void main(String[] args) {
+		FileWriter fw = null;
+		PrintWriter pw = null;
+
+		// try_catch_finally anterior a Java 7
+		try {
+			fw = new FileWriter("ejemplo.txt");
+			pw = new PrintWriter(fw);
+
+			pw.println("Hola");
+			pw.println("Prueba");
+		} catch (IOException e) {
+			System.err.println("No se ha podido CREAR el fichero");
+		} finally {
+			if (pw != null) {
+				pw.close();
+			}
+
+			if (fw != null) {
+				try {
+					fw.close();
+				} catch (IOException e) {
+					System.err.println("No se ha podido CERRAR el fichero");
+				}
+			}
 		}
-		
-		sc.close();
-		fr.close();
+
+		// try_with_resource (Java 7)
+		try (FileReader fr = new FileReader("ejemplo.txt");
+				Scanner sc = new Scanner(fr)) {
+			String linea;
+
+			while (sc.hasNextLine()) {
+				linea = sc.nextLine();
+				System.out.println(linea);
+			}
+		} catch (IOException e) {
+			System.err.println("No se ha podido leer el fichero");
+		}
 	}
 
 }
