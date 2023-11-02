@@ -28,6 +28,7 @@ public class Cliente {
 			System.out.println(linea);
 		} catch (IOException e) {
 			System.err.println("Error de conexión");
+			e.printStackTrace();
 		}
 	}
 
