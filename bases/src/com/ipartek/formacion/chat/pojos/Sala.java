@@ -72,8 +72,8 @@ public class Sala {
 		mensajes.put(id, mensaje);
 	}
 	
-	public Iterable<Mensaje> getMensajes() {
-		return mensajes.values();
+	public Mensaje[] getMensajes() {
+		return mensajes.values().toArray(new Mensaje[mensajes.size()]);
 	}
 	
 	public Iterable<Usuario> getUsuarios() {
