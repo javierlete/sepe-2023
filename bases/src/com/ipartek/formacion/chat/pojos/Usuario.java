@@ -3,7 +3,9 @@ package com.ipartek.formacion.chat.pojos;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Usuario {
+import com.ipartek.formacion.bibliotecas.LongId;
+
+public class Usuario implements LongId {
 	// Variables de instancia
 	private Long id;
 	private String nombre;

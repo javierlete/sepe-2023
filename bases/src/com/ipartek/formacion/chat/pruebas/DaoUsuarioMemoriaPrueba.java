@@ -19,7 +19,13 @@ public class DaoUsuarioMemoriaPrueba {
 		
 		dao.borrar(1L);
 		
-		System.out.println(dao.obtenerPorId(2L));
+		Usuario usuarioAModificar = dao.obtenerPorId(3L);
+		
+		System.out.println(usuarioAModificar);
+		
+		usuarioAModificar.setNombre("Modificado");
+		
+		dao.modificar(usuarioAModificar);
 		
 		for(Usuario u: dao.obtenerTodos()) {
 			System.out.println(u);

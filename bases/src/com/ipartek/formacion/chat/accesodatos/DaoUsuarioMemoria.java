@@ -1,45 +1,38 @@
 package com.ipartek.formacion.chat.accesodatos;
 
 import java.time.LocalDateTime;
-import java.util.TreeMap;
 import java.util.function.Predicate;
 
+import com.ipartek.formacion.bibliotecas.TablaMemoria;
 import com.ipartek.formacion.chat.pojos.Usuario;
 
 public class DaoUsuarioMemoria implements DaoUsuario {
 
-	private static final TreeMap<Long, Usuario> usuarios = new TreeMap<>();
+	private static final TablaMemoria<Usuario> usuarios = new TablaMemoria<>();
 	
 	@Override
 	public Iterable<Usuario> obtenerTodos() {
-		return usuarios.values();
+		return usuarios.select();
 	}
 
 	@Override
 	public Usuario obtenerPorId(Long id) {
-		return usuarios.get(id);
+		return usuarios.select(id);
 	}
 
 	@Override
 	public Usuario insertar(Usuario usuario) {
-		Long id = usuarios.size() > 0 ? usuarios.lastKey() + 1L: 1L;
-		
-		usuario.setId(id);
-		usuarios.put(id, usuario);
-		
-		return usuario;
+		return usuarios.insert(usuario);
 	}
 
 	@Override
 	public Usuario modificar(Usuario usuario) {
-		usuarios.put(usuario.getId(), usuario);
-		
-		return usuario;
+		return usuarios.update(usuario);
 	}
 
 	@Override
 	public void borrar(Long id) {
-		usuarios.remove(id);		
+		usuarios.delete(id);
 	}
 
 	@Override
