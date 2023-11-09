@@ -8,7 +8,7 @@ import com.ipartek.formacion.chat.pojos.Usuario;
 
 public class DaoUsuarioMemoria implements DaoUsuario {
 
-	private static final TablaMemoria<Usuario> usuarios = new TablaMemoria<>();
+	static final TablaMemoria<Usuario> usuarios = new TablaMemoria<>();
 	
 	@Override
 	public Iterable<Usuario> obtenerTodos() {
