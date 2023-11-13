@@ -40,4 +40,23 @@ public class Consola {
 		
 		return i;
 	}
+	
+	public static Long rLong(String mensaje) {
+		String linea;
+		
+		long l = 0;
+		boolean hayError = true;
+		
+		do {
+			try {
+				linea = rString(mensaje);
+				l = Long.parseLong(linea);
+				hayError = false;
+			} catch (NumberFormatException e) {
+				pl("El dato introducido no es un entero");
+			} 
+		} while (hayError);
+		
+		return l;
+	}
 }
