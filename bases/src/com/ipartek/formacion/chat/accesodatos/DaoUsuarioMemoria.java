@@ -70,4 +70,14 @@ public class DaoUsuarioMemoria implements DaoUsuario {
 			return u.getFechaUltimaConexion().isAfter(fechaInicial) && u.getFechaUltimaConexion().isBefore(fechaFinal);
 		}
 	}
+
+	@Override
+	public void borrar() {
+		usuarios.clear();
+	}
+
+	@Override
+	public int tamano() {
+		return usuarios.size();
+	}
 }

@@ -7,4 +7,7 @@ public interface Dao<T> {
 	public T insertar(T objeto);
 	public T modificar(T objeto);
 	public void borrar(Long id);
+	public void borrar();
+	
+	public int tamano();
 }
