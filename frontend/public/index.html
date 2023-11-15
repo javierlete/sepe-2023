@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo de HTML</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
@@ -154,7 +155,7 @@ public class HolaMundo {
 
             <section id="multimedia">
                 <h3>Multimedia</h3>
-                
+
                 <figure>
                     <img src="https://picsum.photos/640/480" alt="Imagen">
                     <figcaption>Imagen de picsum photos</figcaption>
@@ -168,22 +169,27 @@ public class HolaMundo {
                     <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English">
                 </video>
 
-                <iframe title="Mapa para ir a Ipartek"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.7622685802!2d-2.916166923767097!3d43.25640397112378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses-419!2ses!4v1699976638832!5m2!1ses-419!2ses"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="aspecto a1x1">
+                    <iframe title="Mapa para ir a Ipartek"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.7622685802!2d-2.916166923767097!3d43.25640397112378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses-419!2ses!4v1699976638832!5m2!1ses-419!2ses"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="aspecto a4x3">
+                    <iframe title="Rock en Spotify"
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
 
-                <iframe title="Rock en Spotify" style="border-radius:12px"
-                    src="https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator"
-                    height="352" allowfullscreen=""
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
-
-                <iframe width="560" height="315"
-                    src="https://www.youtube-nocookie.com/embed/KBca3xf-j3o?si=mSZQAsWITkvustd6"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
+                <div class="aspecto a16x9">
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/KBca3xf-j3o?si=mSZQAsWITkvustd6"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
             </section>
 
             <section id="formularios">
@@ -203,7 +209,8 @@ public class HolaMundo {
 
                         <div>
                             <label for="nombre">Nombre</label>
-                            <input type="text" required minlength="5" maxlength="50" id="nombre" name="nombre" placeholder="Escriba su nombre">
+                            <input type="text" required minlength="5" maxlength="50" id="nombre" name="nombre"
+                                placeholder="Escriba su nombre">
                         </div>
 
                         <div>
@@ -220,7 +227,7 @@ public class HolaMundo {
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" placeholder="Escriba su password">
                         </div>
-                        
+
                         <div>
                             <label for="edad">Edad</label>
                             <input type="number" min="0" id="edad" name="edad" placeholder="Edad">
@@ -258,7 +265,7 @@ public class HolaMundo {
                                 <option value="mujer">Mujer</option>
                             </select>
                         </div>
-                        
+
                         <div>
                             <label for="hobbies">Hobbies</label>
                             <select id="hobbies" name="hobbies" multiple>
@@ -267,7 +274,7 @@ public class HolaMundo {
                                 <option value="cocina">Cocina</option>
                             </select>
                         </div>
-                        
+
                         <div>
                             <label>Intereses</label>
                             <label>Ciberseguridad</label>
@@ -314,7 +321,7 @@ public class HolaMundo {
     <footer>
         <p>&copy;2023 Javier Lete</p>
         <p>
-            <a href="#">Arriba</a>
+            <a id="arriba" href="#">Arriba</a>
         </p>
     </footer>
 </body>
