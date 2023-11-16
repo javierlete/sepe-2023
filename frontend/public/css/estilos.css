@@ -34,7 +34,8 @@ a:hover {
     text-decoration: underline;
 }
 
-header, footer {
+header,
+footer {
     background-color: var(--color-tinta);
     color: var(--color-fondo);
 
@@ -220,7 +221,7 @@ table {
 aside {
     padding: var(--margen-normal);
     background-color: var(--color-fondo-suave);
-    
+
     & ul {
         padding: 0;
     }
@@ -250,5 +251,130 @@ aside {
         color: var(--color-fondo-suave);
 
         text-decoration: none;
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+        & ul {
+            display: flex;
+            margin: 0;
+        }
+
+        & h1 {
+            display: none;
+        }
+
+        & li:first-of-type:before {
+            content: "Ejemplo de HTML ";
+        }
+    }
+
+    #parrafos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 var(--margen-normal);
+
+        & h3 {
+            grid-column-end: span 2;
+        }
+
+        & pre {
+            grid-row-end: span 3;
+        }
+    }
+
+    #listas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0 var(--margen-normal);
+
+        align-content: center;
+
+        & h3 {
+            grid-column-end: span 3;
+        }
+    }
+
+    #html {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        & section {
+            width: 100%;
+        }
+
+        & #listas {
+            width: 70%;
+        }
+
+        & #tablas {
+            width: 30%;
+        }
+    }
+
+    #formularios form:last-of-type fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 var(--margen-normal);
+
+        & label {
+            width: 5rem;
+        }
+
+        & input,
+        & select {
+            width: auto;
+            flex-grow: 1;
+        }
+
+        & div:last-of-type {
+            display: block;
+            & * {
+                width: 100%;
+            }
+        }
+
+        & div {
+            width: calc(50% - var(--margen-normal) / 2);
+
+            display: flex;
+            align-items: baseline;
+        }
+
+        & div:last-of-type,
+        #intereses,
+        #intereses-principales {
+            width: 100%;
+        }
+
+        #intereses,
+        #intereses-principales {
+
+            & label:not(:first-of-type),
+            & input {
+                width: auto;
+                flex-grow: 0;
+                padding: 0.5rem;
+            }
+        }
+    }
+
+    aside ul {
+        display: flex;
+        gap: var(--margen-normal);
+    }
+
+    footer {
+        text-align: left;
+    }
+
+    #arriba {
+        display: none;
     }
 }
