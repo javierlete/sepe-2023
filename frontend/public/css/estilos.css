@@ -335,6 +335,7 @@ aside {
 
         & div:last-of-type {
             display: block;
+
             & * {
                 width: 100%;
             }
@@ -376,5 +377,48 @@ aside {
 
     #arriba {
         display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    #multimedia {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--margen-normal);
+        grid-template-areas:
+            "titulo-multimedia titulo-multimedia"
+            "audio audio"
+            "youtube video"
+            "mapa spotify"
+            "imagen imagen"
+        ;
+
+        & h3 {
+            grid-area: titulo-multimedia;
+        }
+
+        & figure {
+            grid-area: imagen;
+        }
+
+        & audio {
+            grid-area: audio;
+        }
+
+        & video {
+            grid-area: video;
+        }
+
+        & .aspecto:nth-of-type(1) {
+            grid-area: mapa;
+        }
+
+        & .aspecto:nth-of-type(2) {
+            grid-area: spotify;
+        }
+
+        & .aspecto:nth-of-type(3) {
+            grid-area: youtube;
+        }
     }
 }
