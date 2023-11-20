@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Raleway&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -9,10 +11,15 @@
     --color-fondo-suave: lightgray;
     --color-fondo-fuerte: darkgray;
 
-    --tipo-letra-texto: Arial, Helvetica, sans-serif;
+    --tipo-letra-texto: 'Raleway', sans-serif;
+    --tipo-letra-titulo: 'Bungee Spice', sans-serif;
 
     --margen-normal: 1rem;
     --margen-pequeno: 0.25rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--tipo-letra-titulo);
 }
 
 body {
