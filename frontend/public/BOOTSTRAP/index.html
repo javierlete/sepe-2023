@@ -39,28 +39,30 @@
     </nav>
 
     <main class="container my-4">
-        <article id="html">
+        <article class="row" id="html">
             <h2 class="display-1"><i class="bi bi-filetype-html"></i> HTML</i></h2>
 
-            <section id="parrafos">
-                <h3 class="mt-5 mb-3"><i class="bi bi-text-paragraph"></i> Parrafos</i></h3>
-
-                <div class="bg-body-secondary border rounded p-2 d-flex justify-content-center my-3">
-                    <pre>
+            <section class="col-12" id="parrafos">
+                <div class="row align-items-top">
+                    <h3 class="mt-5 mb-3"><i class="bi bi-text-paragraph"></i> Parrafos</i></h3>
+                    <div class="col-md-6 bg-body-secondary border rounded p-2 d-flex justify-content-center my-3">
+                        <pre>
 public class HolaMundo {
     public static void main(String[] args) {
         System.out.println("Hola Mundo");
     }
 }</pre>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Lorem <strong>ipsum</strong> dolor sit amet consectetur adipisicing elit. Error, deserunt?</p>
+                        <p>Officia <em>dolore</em> recusandae inventore autem maxime voluptatum voluptatem atque optio.</p>
+                        <p>Perspiciatis, <span class="destacado">vitae</span> nostrum voluptates obcaecati atque provident quasi
+                            dolor vero!</p>
+                    </div>
                 </div>
-
-                <p>Lorem <strong>ipsum</strong> dolor sit amet consectetur adipisicing elit. Error, deserunt?</p>
-                <p>Officia <em>dolore</em> recusandae inventore autem maxime voluptatum voluptatem atque optio.</p>
-                <p>Perspiciatis, <span class="destacado">vitae</span> nostrum voluptates obcaecati atque provident quasi
-                    dolor vero!</p>
             </section>
 
-            <section id="listas">
+            <section class="col-sm-4" id="listas">
                 <h3 class="mt-5 mb-3"><i class="bi bi-list-task"></i> Listas</h3>
 
                 <!-- Unordered List -->
@@ -101,7 +103,7 @@ public class HolaMundo {
                 </dl>
             </section>
 
-            <section id="tablas">
+            <section class="col-sm-8" id="tablas">
                 <h3 class="mt-5 mb-3"><i class="bi bi-table"></i> Tablas</h3>
 
                 <table class="table table-bordered table-striped table-hover">
@@ -169,44 +171,42 @@ public class HolaMundo {
                 </table>
             </section>
 
-            <section id="multimedia">
+            <section class="col-12" id="multimedia">
                 <h3 class="mt-5 mb-3"><i class="bi bi-collection-play-fill"></i> Multimedia</h3>
 
-                <figure class="figure">
-                    <img src="https://picsum.photos/640/480" class="figure-img img-fluid rounded border" alt="Imagen">
-                    <figcaption class="figure-caption">Imagen de picsum photos</figcaption>
-                </figure>
-
-                <audio class="w-100" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" controls></audio>
-
-                <video class="w-100 rounded border"
-                    src="https://ia800300.us.archive.org/17/items/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
-                    controls>
-                    <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English">
-                </video>
-
-                <div class="ratio ratio-1x1">
-                    <iframe class="rounded border" title="Mapa para ir a Ipartek"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.7622685802!2d-2.916166923767097!3d43.25640397112378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses-419!2ses!4v1699976638832!5m2!1ses-419!2ses"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="ratio ratio-4x3">
-                    <iframe title="Rock en Spotify"
-                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator"
-                        allowfullscreen=""
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        loading="lazy"></iframe>
-                </div>
-
-                <div class="ratio ratio-16x9">
-                    <iframe class="rounded border" src="https://www.youtube-nocookie.com/embed/KBca3xf-j3o?si=mSZQAsWITkvustd6"
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
+                <div class="row align-items-start">
+                    <figure class="col-md-6 figure">
+                        <img src="https://picsum.photos/640/480" class="figure-img img-fluid rounded border" alt="Imagen">
+                        <figcaption class="figure-caption">Imagen de picsum photos</figcaption>
+                    </figure>
+                    <audio class="order-first col-12" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" controls></audio>
+                    <video class="col-md-6  rounded border"
+                        src="https://ia800300.us.archive.org/17/items/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+                        controls>
+                        <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English">
+                    </video>
+                    <div class="col-md-6  ratio ratio-1x1" style="width: 50%">
+                        <iframe class="rounded border" title="Mapa para ir a Ipartek"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.7622685802!2d-2.916166923767097!3d43.25640397112378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses-419!2ses!4v1699976638832!5m2!1ses-419!2ses"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="col-md-6  ratio ratio-4x3" style="width: 50%">
+                        <iframe title="Rock en Spotify"
+                            src="https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator"
+                            allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe>
+                    </div>
+                    <div class="col-md-6  ratio ratio-16x9" style="width: 50%">
+                        <iframe class="rounded border" src="https://www.youtube-nocookie.com/embed/KBca3xf-j3o?si=mSZQAsWITkvustd6"
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
                 </div>
             </section>
 
-            <section id="formularios">
+            <section class="col-12" id="formularios">
                 <h3 class="mt-5 mb-3"><i class="bi bi-input-cursor"></i> Formularios</h3>
 
                 <form action="https://www.google.es/search">
@@ -218,61 +218,61 @@ public class HolaMundo {
                 </form>
 
                 <form>
-                    <fieldset>
-                        <legend>Datos personales</legend>
+                    <fieldset class="row row-cols-md-2 align-items-center">
+                        <legend class="w-100">Datos personales</legend>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="nombre">Nombre</label>
                             <input class="form-control mb-3" type="text" required minlength="5" maxlength="50" id="nombre" name="nombre"
                                 placeholder="Escriba su nombre">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="apellidos">Apellidos</label>
                             <input class="form-control mb-3" type="text" id="apellidos" name="apellidos" placeholder="Escriba sus apellidos">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="email">Email</label>
                             <input class="form-control mb-3" type="email" id="email" name="email" placeholder="Escriba su email">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="password">Password</label>
                             <input class="form-control mb-3" type="password" id="password" name="password" placeholder="Escriba su password">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="edad">Edad</label>
                             <input class="form-control mb-3" type="number" min="0" id="edad" name="edad" placeholder="Edad">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="telefono">Teléfono</label>
                             <input class="form-control mb-3" type="tel" id="telefono" name="telefono" placeholder="Teléfono">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="web">Web</label>
                             <input class="form-control mb-3" type="url" id="web" name="web" placeholder="Web">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="fecha">Fecha</label>
                             <input class="form-control mb-3" type="date" id="fecha" name="fecha">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="hora">Hora</label>
                             <input class="form-control mb-3" type="time" id="hora" name="hora">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="color">Color</label>
                             <input class="form-control mb-3" type="color" id="color" name="color">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="sexo">Sexo</label>
                             <select class="form-select mb-3" id="sexo" name="sexo">
                                 <option value="hombre">Hombre</option>
@@ -280,7 +280,7 @@ public class HolaMundo {
                             </select>
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="hobbies">Hobbies</label>
                             <select class="form-select mb-3" id="hobbies" name="hobbies" multiple>
                                 <option value="pintura">Pintura</option>
@@ -289,7 +289,7 @@ public class HolaMundo {
                             </select>
                         </div>
 
-                        <div id="intereses mb-3">
+                        <div class="col" id="intereses mb-3">
                             <label class="form-label w-100">Intereses</label>
                             <label class="form-check-label">Ciberseguridad</label>
                             <input class="form-check-input" type="checkbox" id="ciberseguridad" name="ciberseguridad">
@@ -299,7 +299,7 @@ public class HolaMundo {
                             <input class="form-check-input" type="checkbox" id="programacion" name="programacion">
                         </div>
 
-                        <div id="intereses-principales">
+                        <div class="col" id="intereses-principales">
                             <label class="form-label w-100">Intereses</label>
                             <label class="form-check-label">Ciberseguridad</label>
                             <input class="form-check-input" type="radio" id="radio-ciberseguridad" name="interes-prioritario">
@@ -309,7 +309,7 @@ public class HolaMundo {
                             <input class="form-check-input" type="radio" id="radio-programacion" name="interes-prioritario">
                         </div>
 
-                        <div>
+                        <div class="col">
                             <label class="form-label" for="comentarios">Comentarios</label>
                             <textarea class="form-control mb-3" id="comentarios" name="comentarios"
                                 placeholder="Escriba sus comentarios"></textarea>
@@ -323,7 +323,7 @@ public class HolaMundo {
     </main>
     <aside class="bg-body-secondary">
         <nav aria-label="Anuncios">
-            <ul class="nav flex-column">
+            <ul class="nav flex-column flex-md-row">
                 <li class="nav-item"><a class="nav-link" href="#">Elemento 1</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Elemento 2</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Elemento 3</a></li>
@@ -332,7 +332,7 @@ public class HolaMundo {
             </ul>
         </nav>
     </aside>
-    <footer class="text-bg-dark p-2 text-center">
+    <footer class="text-bg-dark p-2 text-center d-sm-flex justify-content-sm-between">
         <p>&copy;2023 Javier Lete</p>
         <p class="d-none">
             <a id="arriba" href="#"><i class="fa-solid fa-arrow-up"></i></a>
