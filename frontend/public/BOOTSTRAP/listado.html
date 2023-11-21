@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de HTML</title>
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <nav aria-label="Menú" class="navbar navbar-expand-md bg-dark sticky-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Tienda</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item"><a class="nav-link" href="#">Principal</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/300/200?1" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Portátil</h5>
+                        <p class="card-text">Portátil mejor del mundo mundial.</p>
+                        <a class="btn btn-primary w-100" href="detalle.html">Ver detalle</a>
+                    </div>
+                    <div class="card-footer text-end">
+                        <small class="text-body-secondary">1234,12€</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://picsum.photos/300/200?2" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Portátil</h5>
+                        <p class="card-text">Portátil mejor del mundo mundial.</p>
+                        <a class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#detalle" href="#">Ver
+                            detalle</a>
+                    </div>
+                    <div class="card-footer text-end">
+                        <small class="text-body-secondary">1234,12€</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-bg-dark p-2 text-center d-sm-flex justify-content-sm-between">
+        <p>&copy;2023 Javier Lete</p>
+        <p class="d-none">
+            <a id="arriba" href="#"><i class="fa-solid fa-arrow-up"></i></a>
+        </p>
+        <ul class="d-flex list-unstyled justify-content-center">
+            <li><a class="text-white" href="#"><i class="px-1 bi bi-facebook"></i></a></li>
+            <li><a class="text-white" href="#"><i class="px-1 bi bi-twitter"></i></a></li>
+            <li><a class="text-white" href="#"><i class="px-1 bi bi-instagram"></i></a></li>
+            <li><a class="text-white" href="#"><i class="px-1 bi bi-youtube"></i></a></li>
+            <li><a class="text-white" href="#"><i class="px-1 bi bi-tiktok"></i></a></li>
+
+        </ul>
+    </footer>
+
+    <div class="modal fade" id="detalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Portátil</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://picsum.photos/640/480" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Portátil</h5>
+                                    <p class="card-text">Portátil mejor del mundo mundial.</p>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Procesador: Intel Core i7</li>
+                                        <li class="list-group-item">Memoria RAM: 16GB</li>
+                                        <li class="list-group-item">Almacenamiento: 512GB SSD</li>
+                                        <li class="list-group-item">Tarjeta gráfica: NVIDIA GeForce RTX 3070</li>
+                                        <li class="list-group-item">Pantalla: 15.6 pulgadas</li>
+                                        <li class="list-group-item">Sistema operativo: Windows 10</li>
+                                    </ul>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
