@@ -123,3 +123,25 @@ console.log('Hola'.toUpperCase());
 String.prototype.toUpperCase = () => 'Te fastidias';
 
 console.log('Hola'.toUpperCase());
+
+class PersonaClase {
+    constructor(nombre, apellidos) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+    getNombreCompleto() {
+        return this.nombre + ' ' + this.apellidos;
+    }
+}
+
+const pClase = new PersonaClase('Pepe', 'Pérez');
+
+pClase.direccion = 'asdfasdfasd';
+
+delete pClase.apellidos;
+
+PersonaClase.prototype.getNombreMayusculas = function() { return this.nombre.toUpperCase() };
+
+console.log(pClase);
+console.log(pClase.getNombreCompleto());
+console.log(pClase.getNombreMayusculas());
