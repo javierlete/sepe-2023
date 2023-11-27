@@ -21,7 +21,7 @@ class DaoUsuarioMemoriaTest {
 
 	private static final Usuario UNO = new Usuario("Uno", LocalDateTime.of(2023, 1, 1, 0, 0));
 	private static final Usuario DOS = new Usuario("Dos", LocalDateTime.of(2023, 2, 1, 0, 0));
-	
+
 	private static final Usuario TRES = new Usuario("Tres", LocalDateTime.of(2023, 3, 1, 0, 0));
 
 	static DaoUsuario dao;
@@ -80,30 +80,30 @@ class DaoUsuarioMemoriaTest {
 	@Test
 	void testInsertar() {
 		Usuario usuario = dao.insertar(TRES);
-		
+
 		assertNotNull(usuario);
 		assertEquals(3, DaoUsuarioMemoria.usuarios.size());
-		
+
 		assertEquals(TRES, usuario);
 	}
 
 	@Test
 	void testModificar() {
 		Usuario usuarioAModificar = new Usuario(2L, "Modificado", LocalDateTime.now());
-		
+
 		Usuario recibido = dao.modificar(usuarioAModificar);
-		
+
 		assertEquals(usuarioAModificar, recibido);
-		
+
 		Usuario colocado = DaoUsuarioMemoria.usuarios.get(usuarioAModificar.getId());
-		
+
 		assertEquals(usuarioAModificar, colocado);
 	}
 
 	@Test
 	void testBorrar() {
 		dao.borrar(2L);
-		
+
 		assertEquals(1, DaoUsuarioMemoria.usuarios.size());
 	}
 
