@@ -23,7 +23,7 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 	}
 
 	@Override
-	public Usuario datosUsuario(Long id) {
+	public Usuario detalle(Long id) {
 		log.info("Se han pedido los datos del usuario " + id);
 		
 		Usuario usuario = dao.obtenerPorId(id);
@@ -37,5 +37,27 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 			
 			return null;
 		}
+	}
+
+	@Override
+	public Usuario crear(Usuario usuario) {
+		Usuario resultado = dao.insertar(usuario);
+		log.info("Se ha insertado el usuario " + resultado);
+		
+		return resultado;
+	}
+
+	@Override
+	public Usuario cambiar(Usuario usuario) {
+		Usuario resultado = dao.modificar(usuario);
+		log.info("Se ha modificado el usuario " + resultado);
+		
+		return resultado;
+	}
+
+	@Override
+	public void eliminar(Long id) {
+		dao.borrar(id);
+		log.info("Se ha borrado el usuario id " + id);
 	}
 }

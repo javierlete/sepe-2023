@@ -64,12 +64,12 @@ class UsuarioNegocioImplTest {
 
 	@Test
 	void testDatosUsuario() {
-		Usuario usuario = un.datosUsuario(2L);
+		Usuario usuario = un.detalle(2L);
 		
 		assertNotNull(usuario);
 		assertEquals(DOS, usuario);
 		
-		usuario = un.datosUsuario(5L);
+		usuario = un.detalle(5L);
 		
 		assertNull(usuario);
 	}

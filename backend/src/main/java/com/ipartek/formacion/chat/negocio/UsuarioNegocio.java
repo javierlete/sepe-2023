@@ -4,5 +4,8 @@ import com.ipartek.formacion.chat.pojos.Usuario;
 
 public interface UsuarioNegocio {
 	Iterable<Usuario> listado();
-	Usuario datosUsuario(Long id);
+	Usuario detalle(Long id);
+	Usuario crear(Usuario usuario);
+	Usuario cambiar(Usuario usuario);
+	void eliminar(Long id);
 }
