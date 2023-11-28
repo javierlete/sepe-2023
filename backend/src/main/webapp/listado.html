@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de usuarios</title>
+
+    <script src="js/listado.js"></script>
+</head>
+
+<body>
+    <h1>Listado de usuarios</h1>
+
+    <table>
+        <caption>Usuarios</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Fecha última conexión</th>
+                <th>OPCIONES</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="javascript:formulario()">Añadir</a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <form>
+        <input id="id" placeholder="Id">
+        <input id="nombre" placeholder="Nombre">
+        <input id="fecha" placeholder="Fecha de última conexión">
+        <button>Guardar</button>
+    </form>
+</body>
+
+</html>
