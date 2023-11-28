@@ -40,6 +40,11 @@ public class UsuarioServlet extends HttpServlet {
 		if (id != null) {
 			Usuario usuario = un.detalle(id);
 
+			if(usuario == null) {
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				return;
+			}
+			
 			String json = jb.toJson(usuario);
 			out.println(json);
 			return;
@@ -58,6 +63,7 @@ public class UsuarioServlet extends HttpServlet {
 
 		Usuario resultado = un.crear(usuario);
 
+		response.setStatus(HttpServletResponse.SC_CREATED);
 		response.getWriter().append(jb.toJson(resultado));
 	}
 
@@ -82,6 +88,8 @@ public class UsuarioServlet extends HttpServlet {
 		Long id = obtenerId(request);
 
 		un.eliminar(id);
+		
+		response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 	}
 
 	private static Long obtenerId(HttpServletRequest request) {
