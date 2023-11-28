@@ -74,11 +74,17 @@ async function recargarTabla() {
 }
 
 async function formulario(id) {
-    table.style.display = 'none';
-    form.style.display = 'block';
-
     if(id) {
 	    const respuesta = await fetch(`${URL}/${id}`);
+	    
+	    console.log(respuesta);
+	    
+	    if(respuesta.status === 404) {
+			await recargarTabla();
+			alert('No se ha encontrado el registro y se ha refrescado la tabla con sus valores actuales');
+			return;
+		}
+	    
 	    const usuario = await respuesta.json();
 
         inputId.value = usuario.id;
@@ -89,6 +95,9 @@ async function formulario(id) {
         inputNombre.value = '';
         inputFecha.value = '';
     }
+    
+    table.style.display = 'none';
+    form.style.display = 'block';
 }
 
 async function borrar(id) {
