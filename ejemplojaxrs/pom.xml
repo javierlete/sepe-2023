@@ -27,6 +27,13 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>8.0.1.Final</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.eclipse/yasson -->
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>3.0.3</version>
+		</dependency>
 
 	</dependencies>
 
