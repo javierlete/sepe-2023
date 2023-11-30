@@ -21,6 +21,8 @@ public class ClienteRest extends HttpServlet {
 	private static final ClienteServicio servicio = new ClienteServicioImpl();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
 		response.getWriter().append(jb.toJson(servicio.obtenerClientes()));
 	}
 
