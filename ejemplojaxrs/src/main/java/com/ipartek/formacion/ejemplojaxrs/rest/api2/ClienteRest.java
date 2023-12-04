@@ -1,11 +1,17 @@
 package com.ipartek.formacion.ejemplojaxrs.rest.api2;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
 
 import com.ipartek.formacion.ejemplojaxrs.entidades.Cliente;
 import com.ipartek.formacion.ejemplojaxrs.servicios.ClienteServicio;
 import com.ipartek.formacion.ejemplojaxrs.servicios.ClienteServicioImpl;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
@@ -24,6 +30,9 @@ import jakarta.ws.rs.core.Response.Status;
 public class ClienteRest {
 	private static final ClienteServicio servicio = new ClienteServicioImpl();
 
+	private static final ValidatorFactory fabricaValidaciones = Validation.buildDefaultValidatorFactory();
+	private static final Validator validador = fabricaValidaciones.getValidator();
+	
 	@GET
 	public Collection<Cliente> listadoCompleto() {
 		return servicio.obtenerClientes();
@@ -55,13 +64,34 @@ public class ClienteRest {
 	
 	@POST
 	public Response nuevoCliente(Cliente cliente) {
+		var errores = validacionAErrores(cliente);
+		
+		if(errores.size() > 0) {
+			return Response.status(Status.BAD_REQUEST).entity(errores).build();
+		}
+		
 		return Response.status(Status.CREATED).entity(servicio.crearCliente(cliente)).build();
+	}
+
+	private HashMap<String, String> validacionAErrores(Cliente cliente) {
+		Set<ConstraintViolation<Cliente>> fallosDeValidacion = validador.validate(cliente);
+		
+		var errores = new HashMap<String, String>();
+		
+		fallosDeValidacion.stream().forEach(fallo -> errores.put(fallo.getPropertyPath().toString(), fallo.getMessage()));
+		return errores;
 	}
 	
 	@PUT
 	@Path("{id}")
-	public Cliente modificarCliente(@PathParam("id") Long id, Cliente cliente) {
-		return servicio.modificarCliente(cliente);
+	public Response modificarCliente(@PathParam("id") Long id, Cliente cliente) {
+		var errores = validacionAErrores(cliente);
+		
+		if(errores.size() > 0) {
+			return Response.status(Status.BAD_REQUEST).entity(errores).build();
+		}
+		
+		return Response.status(Status.OK).entity(servicio.modificarCliente(cliente)).build();
 	}
 	
 	
