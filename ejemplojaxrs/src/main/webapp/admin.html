@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Administración</title>
+	<script defer src="js/admin.js"></script>
+</head>
+
+<body>
+
+	<table>
+		<caption>Listado de clientes</caption>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>DNI</th>
+				<th>Teléfono</th>
+				<th>Dirección</th>
+				<th>Código Postal</th>
+				<th>OPCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<a href="javascript:editar()">Añadir</a>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+
+
+	<form>
+		<input id="id" placeholder="Id">
+		<input id="nombre" placeholder="Nombre">
+		<input id="apellidos" placeholder="Apellidos">
+		<input id="dni" placeholder="DNI">
+		<input id="telefono" placeholder="Teléfono">
+		<input id="direccion" placeholder="Dirección">
+		<input id="codigo-postal" placeholder="Código Postal">
+		
+		<button id="guardar">Guardar</button>
+	</form>
+</body>
+
+</html>
