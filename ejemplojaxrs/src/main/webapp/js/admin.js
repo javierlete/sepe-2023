@@ -4,6 +4,7 @@ const URL = 'http://localhost:8080/ejemplojaxrs/api/v2/clientes/';
 
 let inputId, inputNombre, inputApellidos, inputDni, inputTelefono, inputDireccion, inputCodigoPostal;
 let form, inputs;
+let table;
 
 window.addEventListener('DOMContentLoaded', async function() {
 	inputs = document.querySelectorAll('input');
@@ -21,8 +22,6 @@ window.addEventListener('DOMContentLoaded', async function() {
 	form.addEventListener('submit', procesarEnvioFormulario);
 
 	await rellenarTabla();
-	
-	new DataTable('table');
 });
 
 
@@ -131,9 +130,13 @@ async function rellenarTabla() {
 	const respuesta = await fetch(URL);
 	const clientes = await respuesta.json();
 
+	table && table.destroy();
+
 	const tbody = document.querySelector('tbody');
+
 	tbody.innerHTML = "";
 	let tr;
+
 	clientes.forEach(c => {
 		tr = document.createElement('tr');
 		tr.innerHTML = `
@@ -151,6 +154,9 @@ async function rellenarTabla() {
 		`;
 		tbody.appendChild(tr);
 	});
+	
+
+	table = new DataTable('table');
 }
 
 async function editar(id) {
