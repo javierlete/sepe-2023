@@ -16,6 +16,10 @@ public class DaoClienteMemoria implements DaoCliente {
 		clientes.put(3L, new Cliente(3L, "87654321A", "Juan", "Pérez", "Su casa", "91234567", "12345"));
 	}
 
+	public DaoClienteMemoria(String driver, String url, String user, String pass) {
+
+	}
+
 	@Override
 	public Collection<Cliente> obtenerTodos() {
 		return clientes.values();

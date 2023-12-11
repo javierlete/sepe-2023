@@ -11,10 +11,9 @@ import java.util.Collection;
 import com.ipartek.formacion.ejemplojaxrs.entidades.Cliente;
 
 public class DaoClienteSqlite implements DaoCliente {
-	private static final String DRIVER = "org.sqlite.JDBC";
-	private static final String URL = "jdbc:sqlite:/sqlite/ejemplojaxrs.db";
-	private static final String USER = "";
-	private static final String PASS = "";
+	private String url = "jdbc:sqlite:/sqlite/ejemplojaxrs.db";
+	private String user = "";
+	private String pass = "";
 	
 	private static final String SQL_SELECT = "SELECT id, nombre, apellidos, dni, telefono, direccion, codigo_postal FROM clientes";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id = ?";
@@ -26,17 +25,21 @@ public class DaoClienteSqlite implements DaoCliente {
 	private static final String SQL_DELETE = "DELETE FROM clientes WHERE id = ?";
 	private static final String SQL_DELETE_TODOS = "DELETE FROM clientes";
 
-	static {
+	public DaoClienteSqlite(String driver, String url, String user, String pass) {
+		this.url = url;
+		this.user = user;
+		this.pass = pass;
+		
 		try {
-			Class.forName(DRIVER);
+			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
 			throw new RepositoriosException("No se ha encontrado el driver de base de datos", e);
 		}
 	}
-
+	
 	private Connection obtenerConexion() {
 		try {
-			return DriverManager.getConnection(URL, USER, PASS);
+			return DriverManager.getConnection(url, user, pass);
 		} catch (SQLException e) {
 			throw new RepositoriosException("No se ha podido establecer la conexión con la base de datos", e);
 		}

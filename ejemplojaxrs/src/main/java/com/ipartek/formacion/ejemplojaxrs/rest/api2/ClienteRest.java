@@ -5,13 +5,11 @@ import java.util.HashMap;
 import java.util.Set;
 
 import com.ipartek.formacion.ejemplojaxrs.entidades.Cliente;
+import com.ipartek.formacion.ejemplojaxrs.global.Globales;
 import com.ipartek.formacion.ejemplojaxrs.servicios.ClienteServicio;
-import com.ipartek.formacion.ejemplojaxrs.servicios.ClienteServicioImpl;
 
 import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
 import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
@@ -28,10 +26,9 @@ import jakarta.ws.rs.core.Response.Status;
 @Path("/clientes")
 @Produces(MediaType.APPLICATION_JSON)
 public class ClienteRest {
-	private static final ClienteServicio servicio = new ClienteServicioImpl();
+	private static final ClienteServicio servicio = Globales.FABRICA.getServicioCliente();
 
-	private static final ValidatorFactory fabricaValidaciones = Validation.buildDefaultValidatorFactory();
-	private static final Validator validador = fabricaValidaciones.getValidator();
+	private static final Validator validador = Globales.FABRICA.getValidator();
 	
 	@GET
 	public Collection<Cliente> listadoCompleto() {

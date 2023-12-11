@@ -5,12 +5,15 @@ import java.util.logging.Logger;
 
 import com.ipartek.formacion.ejemplojaxrs.entidades.Cliente;
 import com.ipartek.formacion.ejemplojaxrs.repositorios.DaoCliente;
-import com.ipartek.formacion.ejemplojaxrs.repositorios.DaoClienteSqlite;
 
 public class ClienteServicioImpl implements ClienteServicio {
 
 	private static final Logger log = Logger.getLogger(ClienteServicioImpl.class.getName());
-	private static final DaoCliente dao = new DaoClienteSqlite();
+	private final DaoCliente dao;
+	
+	public ClienteServicioImpl(DaoCliente dao) {
+		this.dao = dao;
+	}
 	
 	@Override
 	public Collection<Cliente> obtenerClientes() {

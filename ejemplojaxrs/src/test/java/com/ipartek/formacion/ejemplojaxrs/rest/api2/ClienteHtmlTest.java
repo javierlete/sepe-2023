@@ -12,8 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.ipartek.formacion.ejemplojaxrs.entidades.Cliente;
+import com.ipartek.formacion.ejemplojaxrs.global.Globales;
 import com.ipartek.formacion.ejemplojaxrs.servicios.ClienteServicio;
-import com.ipartek.formacion.ejemplojaxrs.servicios.ClienteServicioImpl;
 
 public class ClienteHtmlTest {
 	@Test
@@ -38,7 +38,7 @@ public class ClienteHtmlTest {
         
         WebElement ul = driver.findElement(By.cssSelector("ul"));
         
-        ClienteServicio servicio = new ClienteServicioImpl();
+        ClienteServicio servicio = Globales.FABRICA.getServicioCliente();
 
         Collection<Cliente> clientes = servicio.obtenerClientes();
         
