@@ -21,6 +21,8 @@ window.addEventListener('DOMContentLoaded', async function() {
 	form.addEventListener('submit', procesarEnvioFormulario);
 
 	await rellenarTabla();
+	
+	new DataTable('table');
 });
 
 
