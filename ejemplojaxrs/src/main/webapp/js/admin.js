@@ -1,12 +1,18 @@
 'use strict';
 
 const URL = 'http://localhost:8080/ejemplojaxrs/api/v2/clientes/';
+const BOTON_CERRAR_ALERTA = '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
 
 let inputId, inputNombre, inputApellidos, inputDni, inputTelefono, inputDireccion, inputCodigoPostal;
 let form, inputs;
 let table;
+let alerta;
 
 window.addEventListener('DOMContentLoaded', async function() {
+	alerta = document.querySelector('.alert');
+
+	ocultarAlerta();
+
 	inputs = document.querySelectorAll('input');
 
 	inputId = document.querySelector('#id');
@@ -128,6 +134,16 @@ function vaciarFormulario() {
 
 async function rellenarTabla() {
 	const respuesta = await fetch(URL);
+
+	if (!respuesta.ok) {
+		const mensaje = 'No se han podido recibir los clientes';
+		const nivel = 'danger';
+
+		mostrarAlerta(mensaje, nivel);
+
+		return;
+	}
+
 	const clientes = await respuesta.json();
 
 	table && table.destroy();
@@ -154,9 +170,34 @@ async function rellenarTabla() {
 		`;
 		tbody.appendChild(tr);
 	});
-	
 
-	table = new DataTable('table');
+
+	table = new DataTable('table', {
+		language: {
+			url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json',
+		},
+	});
+}
+
+function mostrarAlerta(mensaje, nivel) {
+	alerta.classList.remove('alert-success');
+	alerta.classList.remove('alert-warning');
+	alerta.classList.remove('alert-danger');
+
+	alerta.innerHTML = mensaje + BOTON_CERRAR_ALERTA;
+
+	alerta.classList.add('alert-' + nivel);
+	alerta.style.display = 'block';
+}
+
+function ocultarAlerta() {
+	alerta.style.display = 'none';
+
+	alerta.classList.remove('alert-success');
+	alerta.classList.remove('alert-warning');
+	alerta.classList.remove('alert-danger');
+
+	alerta.innerHTML = BOTON_CERRAR_ALERTA;
 }
 
 async function editar(id) {
