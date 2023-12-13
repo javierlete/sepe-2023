@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Administración</title>
+
+	<!-- Bootstrap 5 -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script defer src="js/bootstrap.bundle.min.js"></script>
+
+	<!-- DataTables.net -->
+	<link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+	<script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+	<script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+	<script defer src="js/login.js"></script>
+
+	<link href="person-rolodex.svg" rel="icon">
+</head>
+
+<body class="container">
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">Datos de Usuario</h5>
+			<h6 id="cabecera" class="card-subtitle mb-2 text-body-secondary">email</h6>
+			<ul class="list-group list-group-flush">
+				<li id="nombre" class="list-group-item">Nombre</li>
+				<li id="rol" class="list-group-item">Rol</li>
+			</ul>
+		</div>
+	</div>
+
+	<form class="container">
+
+		<div class="row mb-2">
+			<label class="col-form-label col-sm-2" for="email">Email</label>
+			<div class="col-sm">
+				<input type="email" class="form-control" id="email" placeholder="email">
+				<div class="invalid-feedback"></div>
+			</div>
+		</div>
+		<div class="row mb-2">
+			<label class="col-form-label col-sm-2" for="password">Contraseña</label>
+			<div class="col-sm">
+				<input type="password" class="form-control" id="password" placeholder="password">
+				<div class="invalid-feedback"></div>
+			</div>
+		</div>
+
+		<div class="row mb-2">
+			<div class="offset-sm-2 col-sm">
+				<button class="btn btn-primary" id="guardar">Login</button>
+			</div>
+		</div>
+
+	</form>
+</body>
+
+</html>
