@@ -3,6 +3,7 @@ package com.ipartek.formacion.ejemplojaxrs.entidades;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +31,7 @@ public class Rol {
 	@Size(min = 10, max = 255)
 	private String descripcion;
 	
+	@JsonbTransient
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	@Builder.Default
