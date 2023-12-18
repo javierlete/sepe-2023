@@ -6,17 +6,23 @@
     <persistence-unit name="com.ipartek.formacion.ejemplojaxrs.entidades">
 
         <class>com.ipartek.formacion.ejemplojaxrs.entidades.Cliente</class>
+        <class>com.ipartek.formacion.ejemplojaxrs.entidades.Usuario</class>
+        <class>com.ipartek.formacion.ejemplojaxrs.entidades.Rol</class>
 
         <properties>
             <!-- Database connection settings -->
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:/sqlite/ejemplojaxrsjpa.db" />
-            <property name="jakarta.persistence.jdbc.user" value="" />
-            <property name="jakarta.persistence.jdbc.password" value="" />
-            <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" />
-            <property name="dialect" value="org.hibernate.community.dialect.SQLiteDialect" />
+            <!-- <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlite:/sqlite/ejemplojaxrsjpa.db" /> -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ejemplojaxrs" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="1234" />
+            <!-- <property name="jakarta.persistence.jdbc.driver" value="org.sqlite.JDBC" /> -->
+            <!-- <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" /> -->
+            <!-- <property name="dialect" value="org.hibernate.community.dialect.SQLiteDialect" /> -->
+            <!-- <property name="dialect" value="org.hibernate.dialect.MySQLDialect" /> -->
 
             <!-- Automatically export the schema -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="create" />
+            <!-- <property name="jakarta.persistence.schema-generation.database.action" value="create" /> -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
 
             <!-- Echo all executed SQL to console -->
             <property name="hibernate.show_sql" value="true" />
