@@ -12,20 +12,24 @@ public class UsuarioPrueba {
 		
 		Usuario usuario = dao.buscarPorEmail("pepe@email.net");
 		
-		System.out.println(usuario);
+		System.out.println("buscarPorEmail: " + usuario);
 		
 		LoginServicio login = Globales.FABRICA.getServicioLogin();
 		
 		usuario = login.validarUsuario("javier@email.net", "javier");
 		
-		System.out.println(usuario);
+		System.out.println("validarUsuario: " + usuario);
 		
 		usuario = login.validarUsuario("juan@email.net", "juan");
 		
-		System.out.println(usuario);
+		System.out.println("validarUsuario: " + usuario);
 		
 		usuario = login.validarUsuario("juan@email.net", "jua");
 		
-		System.out.println(usuario);
+		System.out.println("validarUsuario: " + usuario);
+		
+		for(Usuario u: dao.obtenerTodos()) {
+			System.out.println(u);
+		}
 	}
 }
