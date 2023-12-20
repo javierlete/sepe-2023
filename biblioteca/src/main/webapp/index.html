@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8">
 	<title>Biblioteca</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Bootstrap 5 -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +27,7 @@
 
 <body>
 
-	<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+	<nav class="navbar navbar-expand-lg bg-dark sticky-top" data-bs-theme="dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">
 				<i alt="Logo" class="bi bi-book d-inline-block align-text-top"></i>
@@ -39,36 +41,303 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:activarPrincipal()">Principal</a>
+						<a class="nav-link" href="javascript:mostrar('principal')">Principal</a>
 					</li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0">
 					<li id="menu-admin" class="nav-item">
-						<a class="nav-link" href="javascript:activarAdministracion()">Administración</a>
+						<a class="nav-link" href="javascript:mostrar('admin')">Administración</a>
+					</li>
+					<li id="menu-admin" class="nav-item">
+						<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#prestados"
+							aria-controls="prestados">Libros prestados</a>
 					</li>
 					<li id="rol-usuario" class="navbar-text me-2">
+						[Administrador]
 					</li>
 					<li id="usuario" class="navbar-text">
+						Javier
 					</li>
 
 					<li id="menu-admin" class="nav-item">
-						<a class="nav-link" href="javascript:activarLogin()">Login</a>
+						<a class="nav-link" href="javascript:mostrar('login')">Cerrar sesión</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="alert alert-dismissible fade show d-none" role="alert">
+
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="prestados" aria-labelledby="offcanvasRightLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasRightLabel">Libros prestados</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<ul class="list-group">
+				<li class="list-group-item">An item</li>
+				<li class="list-group-item">A second item</li>
+				<li class="list-group-item">A third item</li>
+				<li class="list-group-item">A fourth item</li>
+				<li class="list-group-item">And a fifth one</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="alerta" class="alert alert-dismissible fade show" role="alert">
 
 	</div>
 
 	<main class="container my-5">
 
+		<section id="login">
+			<form>
+				<div class="row mb-3">
+					<label for="email" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" id="email">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="password" class="col-sm-2 col-form-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="password">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="offset-sm-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Iniciar sesión</button>
+					</div>
+				</div>
+			</form>
+		</section>
 
+		<section id="admin">
+			<h2>Administración</h2>
 
+			<table id="listado" class="table table-hover table-striped table-bordered">
+				<caption>Libros</caption>
+				<thead class="table-dark">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Título</th>
+						<th scope="col">ISBN</th>
+						<th scope="col">Unidades</th>
+						<th scope="col">Género</th>
+						<th scope="col">Autor</th>
+						<th scope="col">Prestatario</th>
+						<th scope="col">OPCIONES</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Desarrollo Web con Spring</td>
+						<td>1234567890</td>
+						<td>10</td>
+						<td>Práctico</td>
+						<td>Eugenia Pérez Martínez</td>
+						<td>Javier</td>
+						<td>
+							<a href="javascript:mostrar('formulario')" class="btn btn-sm btn-primary">Editar</a>
+							<a href="javascript:devolver()" class="btn btn-sm btn-warning">Devolver</a>
+							<a href="javascript:borrar()" class="btn btn-sm btn-danger">Borrar</a>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot class="table-dark">
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<a href="javascript:mostrar('formulario')" class="btn btn-sm btn-primary">Añadir</a>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</section>
+
+		<section id="formulario">
+			<h2>Mantenimiento de libro</h2>
+
+			<form action="javascript:mostrar('admin')">
+				<div class="row mb-3">
+					<label for="id" class="col-sm-2 col-form-label">Id</label>
+					<div class="col-sm-10">
+						<input readonly type="number" class="form-control" id="id" value="2">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="titulo" class="col-sm-2 col-form-label">Título del libro</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="titulo" value="Desarrollo...">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
+					<div class="col-sm-10">
+						<textarea type="text" class="form-control" id="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis facere nisi quo similique quisquam nam recusandae aperiam, totam dolorum eligendi soluta quasi a cumque eaque corporis vitae dolore molestias asperiores.
+						Reprehenderit repellendus corrupti eum voluptas quas molestias ex dolore, veniam suscipit iure itaque possimus fugiat eligendi dolores a, consequatur facere labore optio aut omnis! Velit sunt blanditiis rerum itaque fuga.
+						Provident quidem ab dolorum quia, nam ullam deserunt exercitationem ipsa nesciunt animi saepe a officiis blanditiis similique aspernatur unde tempora quos nisi at numquam reprehenderit eum fugiat perferendis consectetur! Architecto.
+						Repellat doloribus reiciendis asperiores. Eum non necessitatibus nisi perspiciatis, velit nam quam. Veniam cupiditate iste laborum consequatur eveniet. Nihil eligendi praesentium quia laboriosam id sint nam nemo? Fugiat, impedit eveniet?
+						Exercitationem dolores nulla ea pariatur repellendus, officiis possimus libero asperiores nemo earum ducimus, voluptates nobis amet sunt vel nam similique dolorem maxime culpa alias expedita consequatur. Nostrum vitae odit iusto!</textarea>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<label for="isbn" class="col-sm-2 col-form-label">ISBN</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="isbn" value="1234567890982">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="cantidad" value="3">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="categoria" class="col-sm-2 col-form-label">Categoría</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="categoria" value="práctico">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="autor" class="col-sm-2 col-form-label">Autor</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="autor" value="Eugenia">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="prestatario" class="col-sm-2 col-form-label">Prestatario</label>
+					<div class="col-sm-10">
+						<select class="form-select">
+							<option>Elija...</option>
+							<option selected value="1">Javier</option>
+							<option value="2">Pepe</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="offset-sm-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Guardar libro</button>
+						<a class="btn btn-danger" href="javascript:mostrar('admin')" type="submit" class="btn btn-primary">Cancelar</a>
+					</div>
+				</div>
+			</form>
+		</section>
+
+		<section id="principal">
+			<h2>Principal</h2>
+
+			<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4">
+				<!-- row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 -->
+				<div class="col">
+					<div class="card mb-3">
+						<div class="row g-0">
+							<div class="col-4">
+								<img src="https://picsum.photos/500/800" class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-8">
+								<div class="card-body">
+									<h5 class="card-title">Desarrollo Web con Spring</h5>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">Autor: Eugenia Pérez Martínez</li>
+										<li class="list-group-item">Género: práctico</li>
+									</ul>
+									<p class="card-text">
+										<small class="text-body-secondary">5 libros disponibles</small>
+									</p>
+									<p class="card-text">
+										<small class="text-body-secondary">978-84-9964-556-8</small>
+									</p>
+								</div>
+							</div>
+							<div class="col-12">
+								<a class="w-100 stretched-link btn btn-primary" href="javascript:mostrar('detalle')">Ver
+									más información</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="detalle">
+			<h2>Detalle del libro</h2>
+
+			<div class="card mb-3">
+				<div class="row g-0">
+					<div class="col-4">
+						<img src="https://picsum.photos/500/800" class="img-fluid rounded-start" alt="...">
+					</div>
+					<div class="col-8">
+						<div class="card-body">
+							<h5 class="card-title">Desarrollo Web con Spring</h5>
+							<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia omnis
+								pariatur cumque, odio laboriosam maxime voluptates reprehenderit quae labore nostrum eos
+								rem deserunt amet! Veniam a reiciendis officiis laudantium iure.</p>
+							<p class="card-text">Eos sequi cupiditate commodi ipsa dolores earum officiis atque quas,
+								perferendis voluptatum omnis totam debitis molestias quo, fugiat unde saepe pariatur
+								eveniet soluta mollitia non vel, a fugit dignissimos. Enim?</p>
+							<p class="card-text">Iusto hic, aliquid labore maiores iure commodi! Eveniet iusto, in
+								consequuntur, quis voluptatum quo obcaecati voluptas rem voluptatem facilis cum laborum
+								accusamus, dolores cumque corporis eligendi corrupti! Deleniti, hic omnis.</p>
+							<p class="card-text">Harum architecto necessitatibus facilis veritatis enim et porro at
+								minima hic ducimus cum nobis libero debitis, aliquid iusto facere ipsa, vel blanditiis
+								error recusandae. Nostrum tempore eos aliquam maxime maiores.</p>
+							<p class="card-text">Velit facere, mollitia in alias, temporibus dolores odio soluta ea
+								porro veniam eaque saepe. Vitae at id adipisci facere, nam quam sapiente et, dolores
+								dolore provident unde architecto distinctio fugiat.</p>
+							<p>
+								<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+									data-bs-target="#modal-reserva">
+									Reservar
+								</button>
+								<a href="javascript:mostrar('principal')" class="btn btn-secondary">Volver al
+									listado</a>
+							</p>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">Autor: Eugenia Pérez Martínez</li>
+								<li class="list-group-item">Género: práctico</li>
+							</ul>
+							<p class="card-text">
+								<small class="text-body-secondary">5 libros disponibles</small>
+							</p>
+							<p class="card-text">
+								<small class="text-body-secondary">978-84-9964-556-8</small>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="modal-reserva" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+				aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="staticBackdropLabel">Atención</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							Has reservado con éxito el libro Desarrollo....
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" data-bs-dismiss="modal">¡Genial!</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
 
-	<footer class="p-2 text-bg-dark fixed-bottom d-flex justify-content-between">
+	<footer class="p-2 text-bg-dark d-flex justify-content-between">
 		<div>&copy;2023 Javier Lete</div>
 		<div>
 			<ul class="list-unstyled d-flex">
