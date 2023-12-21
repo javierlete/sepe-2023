@@ -20,7 +20,7 @@ const personas = [
 ];
 
 $(function () {
-	mostrar('principal');
+	mostrar('detalle', 6);
 
 	new DataTable('#listado', {
 		language: {
@@ -64,10 +64,10 @@ function ocultar() {
 	$('#alerta').hide();
 }
 
-function mostrar(id) {
+function mostrar(idCapa, id) {
 	ocultar();
 
-	switch (id) {
+	switch (idCapa) {
 		case 'principal':
 			$(libros).each(function () {
 				$('#listado-libros').append(`
@@ -93,7 +93,7 @@ function mostrar(id) {
 								</div>
 							</div>
 							<div class="col-12">
-								<a class="w-100 stretched-link btn btn-primary" href="javascript:mostrar('detalle')">Ver
+								<a class="w-100 stretched-link btn btn-primary" href="javascript:mostrar('detalle', ${this.id})">Ver
 									más información</a>
 							</div>
 						</div>
@@ -102,9 +102,20 @@ function mostrar(id) {
 			});
 			
 			break;
+		case 'detalle':
+			const libro = libros.filter(l => l.id == id)[0];
+
+			$('#libro-titulo').html(libro.titulo);
+			$('#libro-descripcion').html(libro.descripcion);
+			$('#libro-autor').html(libro.autor);
+			$('#libro-genero').html(libro.genero);
+			$('#libro-unidades').html(libro.unidades);
+			$('#libro-isbn').html(libro.isbn);
+
+			break;
 	}
 
-	$('#' + id).show();
+	$('#' + idCapa).show();
 }
 
 function alerta(texto, nivel) {
