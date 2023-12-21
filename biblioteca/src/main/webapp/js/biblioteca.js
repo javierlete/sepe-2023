@@ -14,6 +14,15 @@ $(function() {
 		mostrar('principal');
 	});
 
+	$('#formulario form').on('submit', function(e) {
+		if(this.checkValidity()) {
+			alert('Aceptando datos');
+		} else {
+			e.preventDefault();
+			$(this).addClass('was-validated');
+		}
+	})
+
 	$('#modal-reserva').on('hidden.bs.modal', function() {
 		mostrar('principal');
 	});

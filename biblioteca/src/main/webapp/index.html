@@ -114,110 +114,113 @@
 		<section id="admin">
 			<h2>Administración</h2>
 
-			<table id="listado" class="table table-hover table-striped table-bordered">
-				<caption>Libros</caption>
-				<thead class="table-dark">
-					<tr>
-						<th scope="col">Id</th>
-						<th scope="col">Título</th>
-						<th scope="col">ISBN</th>
-						<th scope="col">Unidades</th>
-						<th scope="col">Género</th>
-						<th scope="col">Autor</th>
-						<th scope="col">Prestatario</th>
-						<th scope="col">OPCIONES</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Desarrollo Web con Spring</td>
-						<td>1234567890</td>
-						<td>10</td>
-						<td>Práctico</td>
-						<td>Eugenia Pérez Martínez</td>
-						<td>Javier</td>
-						<td>
-							<a href="javascript:mostrar('formulario')" class="btn btn-sm btn-primary">Editar</a>
-							<a href="javascript:devolver()" class="btn btn-sm btn-warning">Devolver</a>
-							<a href="javascript:borrar()" class="btn btn-sm btn-danger">Borrar</a>
-						</td>
-					</tr>
-				</tbody>
-				<tfoot class="table-dark">
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>
-							<a href="javascript:mostrar('formulario')" class="btn btn-sm btn-primary">Añadir</a>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
+			<div class="table-responsive">
+				<table id="listado" class="table table-hover table-striped table-bordered">
+					<caption>Libros</caption>
+					<thead class="table-dark">
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Título</th>
+							<th scope="col">ISBN</th>
+							<th scope="col">Unidades</th>
+							<th scope="col">Género</th>
+							<th scope="col">Autor</th>
+							<th scope="col">Prestatario</th>
+							<th scope="col">OPCIONES</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Desarrollo Web con Spring</td>
+							<td>1234567890</td>
+							<td>10</td>
+							<td>Práctico</td>
+							<td>Eugenia Pérez Martínez</td>
+							<td>Javier</td>
+							<td>
+								<a href="javascript:mostrar('formulario')" class="btn btn-sm btn-primary">Editar</a>
+								<a href="javascript:devolver()" class="btn btn-sm btn-warning">Devolver</a>
+								<a href="javascript:borrar()" class="btn btn-sm btn-danger">Borrar</a>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot class="table-dark">
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>
+								<a href="javascript:mostrar('formulario')" class="btn btn-sm btn-primary">Añadir</a>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</section>
 
 		<section id="formulario">
 			<h2>Mantenimiento de libro</h2>
 
-			<form action="javascript:mostrar('admin')">
+			<form action="javascript:mostrar('admin')" novalidate>
 				<div class="row mb-3">
 					<label for="id" class="col-sm-2 col-form-label">Id</label>
 					<div class="col-sm-10">
-						<input readonly type="number" class="form-control" id="id" value="2">
+						<input readonly type="number" class="form-control" id="id">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="titulo" class="col-sm-2 col-form-label">Título del libro</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="titulo" value="Desarrollo...">
+						<input required maxlength="50" type="text" class="form-control" id="titulo">
+						<div class="invalid-feedback">El título es obligatorio y debe tener como máximo 50 caracteres
+						</div>
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
 					<div class="col-sm-10">
-						<textarea type="text" class="form-control" id="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis facere nisi quo similique quisquam nam recusandae aperiam, totam dolorum eligendi soluta quasi a cumque eaque corporis vitae dolore molestias asperiores.
-						Reprehenderit repellendus corrupti eum voluptas quas molestias ex dolore, veniam suscipit iure itaque possimus fugiat eligendi dolores a, consequatur facere labore optio aut omnis! Velit sunt blanditiis rerum itaque fuga.
-						Provident quidem ab dolorum quia, nam ullam deserunt exercitationem ipsa nesciunt animi saepe a officiis blanditiis similique aspernatur unde tempora quos nisi at numquam reprehenderit eum fugiat perferendis consectetur! Architecto.
-						Repellat doloribus reiciendis asperiores. Eum non necessitatibus nisi perspiciatis, velit nam quam. Veniam cupiditate iste laborum consequatur eveniet. Nihil eligendi praesentium quia laboriosam id sint nam nemo? Fugiat, impedit eveniet?
-						Exercitationem dolores nulla ea pariatur repellendus, officiis possimus libero asperiores nemo earum ducimus, voluptates nobis amet sunt vel nam similique dolorem maxime culpa alias expedita consequatur. Nostrum vitae odit iusto!</textarea>
+						<textarea maxlength="2000" type="text" rows="5" class="form-control"
+							id="descripcion"></textarea>
 					</div>
 				</div>
 
 				<div class="row mb-3">
 					<label for="isbn" class="col-sm-2 col-form-label">ISBN</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="isbn" value="1234567890982">
+						<input required pattern="^\d{13}$" type="text" class="form-control" id="isbn">
+						<div class="invalid-feedback">El ISBN debe tener 13 dígitos</div>
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
 					<div class="col-sm-10">
-						<input type="number" class="form-control" id="cantidad" value="3">
+						<input required min="0" type="number" class="form-control" id="cantidad">
+						<div class="invalid-feedback">El mínimo de cantidad es cero</div>
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="categoria" class="col-sm-2 col-form-label">Categoría</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="categoria" value="práctico">
+						<input type="text" class="form-control" id="categoria">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="autor" class="col-sm-2 col-form-label">Autor</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="autor" value="Eugenia">
+						<input type="text" class="form-control" id="autor">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="prestatario" class="col-sm-2 col-form-label">Prestatario</label>
 					<div class="col-sm-10">
 						<select class="form-select">
-							<option>Elija...</option>
-							<option selected value="1">Javier</option>
+							<option selected>Elija...</option>
+							<option value="1">Javier</option>
 							<option value="2">Pepe</option>
 						</select>
 					</div>
@@ -225,7 +228,8 @@
 				<div class="row mb-3">
 					<div class="offset-sm-2 col-sm-10">
 						<button type="submit" class="btn btn-primary">Guardar libro</button>
-						<a class="btn btn-danger" href="javascript:mostrar('admin')" type="submit" class="btn btn-primary">Cancelar</a>
+						<a class="btn btn-danger" href="javascript:mostrar('admin')" type="submit"
+							class="btn btn-primary">Cancelar</a>
 					</div>
 				</div>
 			</form>
