@@ -21,6 +21,7 @@ const personas = [
 
 let usuario;
 let modalReserva;
+let libro;
 
 $(function () {
 	modalReserva = new bootstrap.Modal('#modal-reserva');
@@ -66,6 +67,17 @@ $(function () {
 	$('#modal-reserva').on('hidden.bs.modal', function () {
 		mostrar('principal');
 	});
+
+	$('#libro-reservar').on('click', function () {
+		if (usuario) {
+			usuario.libros.push(libro);
+			
+			abrirModal();
+		} else {
+			alerta('Debes iniciar sesión para poder reservar un libro', 'danger');
+			mostrar('login');
+		}
+	});
 });
 
 function reservar() {
@@ -86,8 +98,6 @@ function ocultar() {
 
 function mostrar(idCapa, id) {
 	ocultar();
-
-	let libro;
 
 	switch (idCapa) {
 		case 'principal':
@@ -134,18 +144,7 @@ function mostrar(idCapa, id) {
 			$('#libro-unidades').html(libro.unidades);
 			$('#libro-isbn').html(libro.isbn);
 
-			$('#libro-reservar').on('click', function () {
-				if (usuario) {
-					console.log(usuario.libros);
-					usuario.libros.push(libro);
-					console.log(usuario.libros);
-					
-					abrirModal();
-				} else {
-					alerta('Debes iniciar sesión para poder reservar un libro', 'danger');
-					mostrar('login');
-				}
-			});
+			
 
 			break;
 	}
