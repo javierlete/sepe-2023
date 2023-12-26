@@ -15,12 +15,14 @@ const libros = [
 ];
 
 const personas = [
-	{ id: 1, email: 'javier@email.net', password: 'javier', nombre: 'Javier', dni: '12345678Z', rol: 'ADMIN' },
-	{ id: 2, email: 'pepe@email.net', password: 'perez', nombre: 'Pepe', dni: '87654321X', rol: 'USUARIO' },
+	{ id: 1, email: 'javier@email.net', password: 'javier', nombre: 'Javier', dni: '12345678Z', rol: 'ADMIN', libros: [] },
+	{ id: 2, email: 'pepe@email.net', password: 'pepe', nombre: 'Pepe', dni: '87654321X', rol: 'USUARIO', libros: [] },
 ];
 
+let usuario;
+
 $(function () {
-	mostrar('detalle', 6);
+	mostrar('login');
 
 	new DataTable('#listado', {
 		language: {
@@ -30,7 +32,23 @@ $(function () {
 
 	$('#login form').on('submit', function (e) {
 		e.preventDefault();
-		mostrar('principal');
+
+		const email = $('#email').val();
+		const password = $('#password').val();
+
+		usuario = personas.filter(p => p.email === email && p.password === password)[0];
+
+		if (usuario) {
+			alerta('Bienvenido ' + usuario.nombre, 'success');
+
+			mostrar('principal');
+		} else {
+			alerta('Usuario o contraseña incorrectos', 'danger');
+
+			$('#password').val('');
+			$('#password').focus();
+		}
+
 	});
 
 	$('#formulario form').on('submit', function (e) {
@@ -61,11 +79,12 @@ function borrar() {
 
 function ocultar() {
 	$('section').hide();
-	$('#alerta').hide();
 }
 
 function mostrar(idCapa, id) {
 	ocultar();
+
+	let libro;
 
 	switch (idCapa) {
 		case 'principal':
@@ -100,10 +119,10 @@ function mostrar(idCapa, id) {
 					</div>
 				</div>`)
 			});
-			
+
 			break;
 		case 'detalle':
-			const libro = libros.filter(l => l.id == id)[0];
+			libro = libros.filter(l => l.id == id)[0];
 
 			$('#libro-titulo').html(libro.titulo);
 			$('#libro-descripcion').html(libro.descripcion);
@@ -112,6 +131,18 @@ function mostrar(idCapa, id) {
 			$('#libro-unidades').html(libro.unidades);
 			$('#libro-isbn').html(libro.isbn);
 
+			$('#libro-reservar').on('click', function () {
+				if (usuario) {
+					usuario.libros.push(libro);
+
+					const modalReserva = new bootstrap.Modal('#modal-reserva');
+					modalReserva.show();
+				} else {
+					alerta('Debes iniciar sesión para poder reservar un libro', 'danger');
+					mostrar('login');
+				}
+			});
+
 			break;
 	}
 
@@ -119,5 +150,7 @@ function mostrar(idCapa, id) {
 }
 
 function alerta(texto, nivel) {
-	$('#alerta').show().html(texto).addClass('alert-' + nivel);
+	console.log(texto, nivel);
+	$('#alerta').remove();
+	$('<div id="alerta" role="alert" class="alert alert-dismissible fade show">').html(texto + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>').addClass('alert-' + nivel).insertAfter('.navbar').show();
 }
