@@ -72,7 +72,7 @@ $(function () {
 		if (usuario) {
 			usuario.libros.push(libro);
 			
-			abrirModal();
+			abrirModal(libro);
 		} else {
 			alerta('Debes iniciar sesión para poder reservar un libro', 'danger');
 			mostrar('login');
@@ -158,7 +158,8 @@ function alerta(texto, nivel) {
 	$('<div id="alerta" role="alert" class="alert alert-dismissible fade show">').html(texto + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>').addClass('alert-' + nivel).insertAfter('.navbar').show();
 }
 
-function abrirModal() {
+function abrirModal(libro) {
+	$('#modal-reserva').find('.modal-body').html('Has reservado el libro ' + libro.titulo);
 	modalReserva.show();
 }
 
