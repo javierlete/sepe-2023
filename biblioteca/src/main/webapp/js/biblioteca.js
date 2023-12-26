@@ -78,6 +78,14 @@ $(function () {
 			mostrar('login');
 		}
 	});
+
+	$('#prestados').on('show.bs.offcanvas', function () {
+		$('.offcanvas-body .list-group').empty();
+
+		$(usuario.libros).each(function() {
+			$('.offcanvas-body .list-group').append('<li class="list-group-item">' + this.titulo + '</li>');
+		});
+	});
 });
 
 function reservar() {
