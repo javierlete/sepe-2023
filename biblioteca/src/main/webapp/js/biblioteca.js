@@ -20,8 +20,11 @@ const personas = [
 ];
 
 let usuario;
+let modalReserva;
 
 $(function () {
+	modalReserva = new bootstrap.Modal('#modal-reserva');
+
 	mostrar('login');
 
 	new DataTable('#listado', {
@@ -133,10 +136,11 @@ function mostrar(idCapa, id) {
 
 			$('#libro-reservar').on('click', function () {
 				if (usuario) {
+					console.log(usuario.libros);
 					usuario.libros.push(libro);
-
-					const modalReserva = new bootstrap.Modal('#modal-reserva');
-					modalReserva.show();
+					console.log(usuario.libros);
+					
+					abrirModal();
 				} else {
 					alerta('Debes iniciar sesión para poder reservar un libro', 'danger');
 					mostrar('login');
@@ -153,4 +157,12 @@ function alerta(texto, nivel) {
 	console.log(texto, nivel);
 	$('#alerta').remove();
 	$('<div id="alerta" role="alert" class="alert alert-dismissible fade show">').html(texto + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>').addClass('alert-' + nivel).insertAfter('.navbar').show();
+}
+
+function abrirModal() {
+	modalReserva.show();
+}
+
+function cerrarModal() {
+	modalReserva.hide();
 }
