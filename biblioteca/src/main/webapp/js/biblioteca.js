@@ -15,13 +15,15 @@ $(function () {
 		},
 	});
 
-	$('#login form').on('submit', function (e) {
+	$('#login form').on('submit', async function (e) {
 		e.preventDefault();
 
 		const email = $('#email').val();
 		const password = $('#password').val();
 
-		usuario = validarUsuario(email, password);
+		usuario = await validarUsuario(email, password);
+
+		console.log(usuario);
 
 		if (usuario) {
 			alerta('Bienvenido ' + usuario.nombre, 'success');
@@ -85,12 +87,16 @@ function ocultar() {
 	$('section').hide();
 }
 
-function mostrar(idCapa, id) {
+async function mostrar(idCapa, id) {
 	ocultar();
+
+	let libros;
 
 	switch (idCapa) {
 		case 'principal':
-			$(obtenerLibros()).each(function () {
+			libros = await obtenerLibros();
+			console.log(libros);
+			$(libros).each(function () {
 				$('#listado-libros').append(`
 				<div class="col">
 					<div class="card mb-3">
@@ -124,7 +130,7 @@ function mostrar(idCapa, id) {
 
 			break;
 		case 'detalle':
-			libro = buscarLibro(id);
+			libro = await buscarLibro(id);
 
 			$('#libro-titulo').html(libro.titulo);
 			$('#libro-descripcion').html(libro.descripcion);
