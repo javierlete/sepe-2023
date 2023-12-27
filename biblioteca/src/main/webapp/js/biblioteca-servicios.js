@@ -1,6 +1,6 @@
-const URL = 'http://localhost:3000/';
-const URL_LIBROS = URL + 'libros/';
-const URL_PERSONAS = URL + 'personas/';
+const URL = '/biblioteca/api/v1';
+const URL_LIBROS = URL + '/usuario/libros/';
+const URL_PERSONAS = URL + '/anonimo/login';
 
 async function obtenerLibros() {
     const respuesta = await fetch(URL_LIBROS);
@@ -13,16 +13,15 @@ async function buscarLibro(id) {
 }
 
 async function validarUsuario(email, password) {
-    const respuesta = await fetch(URL_PERSONAS + '?email=' + email);
-    const personas = await respuesta.json();
+    const respuesta = await fetch(`${URL_PERSONAS}?email=${email}&password=${password}`);
 
-    if (personas.length) {
-        const persona = personas[0];
-
-        if (persona && persona.password === password) {
-            return persona;
-        }
+    if (!respuesta.ok) {
+        return null;
     }
 
-    return null;
+    const persona = await respuesta.json();
+
+    console.log('validarUsuario', persona);
+
+    return persona;
 }
