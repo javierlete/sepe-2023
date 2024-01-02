@@ -99,12 +99,12 @@ async function mostrar(idCapa, id) {
 			$(libros).each(function () {
 				$('#listado-libros').append(`
 				<div class="col">
-					<div class="card mb-3">
+					<div class="card h-100 mb-3">
 						<div class="row g-0">
 							<div class="col-4">
 								<img src="https://picsum.photos/500/800?${this.id}" class="img-fluid rounded-start" alt="...">
 							</div>
-							<div class="col-8">
+							<div class="col-8 mb-3">
 								<div class="card-body">
 									<h5 class="card-title">${this.titulo}</h5>
 									<ul class="list-group list-group-flush">
@@ -119,7 +119,7 @@ async function mostrar(idCapa, id) {
 									</p>
 								</div>
 							</div>
-							<div class="col-12">
+							<div class="col-12 position-absolute bottom-0">
 								<a class="w-100 stretched-link btn btn-primary" href="javascript:mostrar('detalle', ${this.id})">Ver
 									más información</a>
 							</div>
