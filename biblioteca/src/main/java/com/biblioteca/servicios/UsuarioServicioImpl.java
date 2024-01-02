@@ -1,20 +1,22 @@
 package com.biblioteca.servicios;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import com.biblioteca.entidades.Libro;
-import com.biblioteca.mockups.Mockups;
+import com.biblioteca.repositorios.LibroMockupRepositorio;
+import com.biblioteca.repositorios.LibroRepositorio;
 
 import lombok.extern.java.Log;
 
 @Log
 public class UsuarioServicioImpl implements UsuarioServicio {
+	private LibroRepositorio repo = new LibroMockupRepositorio();
+	
 	@Override
 	public Set<Libro> listarLibrosBiblioteca() {
 		log.info("Se han pedido todos los libros");
 
-		var libros = new HashSet<>(Mockups.libros.values());
+		var libros = repo.obtenerTodos();
 
 		log.finest(libros.toString());
 
@@ -25,7 +27,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	public Libro verLibroBiblioteca(Long id) {
 		log.info("Se ha pedido el libro cuyo id es: " + id);
 
-		Libro libro = Mockups.libros.get(id);
+		Libro libro = repo.obtenerPorId(id);
 
 		log.fine(libro != null ? libro.toString() : "No encontrado");
 
