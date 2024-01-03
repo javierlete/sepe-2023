@@ -18,7 +18,7 @@ public class LibroJpaRepositorio implements LibroRepositorio {
 	@SuppressWarnings("unchecked")
 	@Override
 	public Set<Libro> obtenerTodos() {
-		var libros = transaccion(em -> em.createQuery("from Libro").getResultList());
+		var libros = transaccion(em -> em.createQuery("from Libro l left join fetch l.prestatario").getResultList());
 		return new HashSet<Libro>((Collection<Libro>) libros);
 	}
 
