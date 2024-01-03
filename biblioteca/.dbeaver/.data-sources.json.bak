@@ -13,28 +13,6 @@
 				"type": "dev",
 				"auth-model": "native"
 			}
-		},
-		"mysql8-18ccfe9794c-4ce48f3f34beea6b": {
-			"provider": "mysql",
-			"driver": "mysql8",
-			"name": "biblioteca",
-			"save-password": true,
-			"configuration": {
-				"host": "localhost",
-				"port": "3306",
-				"database": "biblioteca",
-				"url": "jdbc:mysql://localhost:3306/biblioteca",
-				"configurationType": "MANUAL",
-				"home": "mysql_client",
-				"type": "dev",
-				"properties": {
-					"connectTimeout": "20000",
-					"rewriteBatchedStatements": "true",
-					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2"
-				},
-				"auth-model": "native",
-				"handlers": {}
-			}
 		}
 	},
 	"connection-types": {
