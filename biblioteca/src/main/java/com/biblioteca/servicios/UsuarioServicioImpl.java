@@ -3,14 +3,14 @@ package com.biblioteca.servicios;
 import java.util.Set;
 
 import com.biblioteca.entidades.Libro;
-import com.biblioteca.repositorios.LibroJpaRepositorio;
+import com.biblioteca.fabrica.Fabrica;
 import com.biblioteca.repositorios.LibroRepositorio;
 
 import lombok.extern.java.Log;
 
 @Log
 public class UsuarioServicioImpl implements UsuarioServicio {
-	private LibroRepositorio repo = new LibroJpaRepositorio();
+	private LibroRepositorio repo = Fabrica.fabrica.obtenerObjeto(LibroRepositorio.class);
 	
 	@Override
 	public Set<Libro> listarLibrosBiblioteca() {
