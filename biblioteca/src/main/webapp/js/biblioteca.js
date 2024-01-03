@@ -96,6 +96,9 @@ async function mostrar(idCapa, id) {
 		case 'principal':
 			libros = await obtenerLibros();
 			console.log(libros);
+			
+			$('#listado-libros').empty();
+			
 			$(libros).each(function () {
 				$('#listado-libros').append(`
 				<div class="col">
