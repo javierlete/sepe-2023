@@ -13,10 +13,18 @@ import jakarta.persistence.Persistence;
 public class PersonaJpaRepositorio implements PersonaRepositorio {
 	private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.biblioteca.entidades");
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public Optional<Persona> obtenerPorEmail(String email) {
-		return (Optional<Persona>) transaccion(em -> em.createQuery("from Persona p where p.email = ?1").setParameter(1, email).getSingleResult());
+		Optional<Persona> optional;
+		
+		try {
+			Persona persona = (Persona) transaccion(em -> em.createQuery("from Persona p left join fetch p.libros where p.email = ?1").setParameter(1, email).getSingleResult());
+			optional = Optional.of(persona);
+		} catch(Exception e) {
+			optional = Optional.empty();
+		}
+		
+		return optional;
 	}
 
 	private Object transaccion(Function<EntityManager, Object> funcion) {
