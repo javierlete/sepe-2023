@@ -57,18 +57,39 @@
 					<li class="nav-item"><a class="nav-link" href="index">Principal</a></li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0">
-					<li id="menu-admin" class="nav-item"><a class="nav-link"
-						href="admin/index">Administración</a></li>
-					<li id="menu-admin" class="nav-item"><a class="nav-link"
-						href="#" data-bs-toggle="offcanvas" data-bs-target="#prestados"
-						aria-controls="prestados">Libros prestados</a></li>
-					<li id="rol-usuario" class="navbar-text me-2">[Administrador]
-					</li>
-					<li id="usuario" class="navbar-text">Javier</li>
+					<c:if test="${sessionScope.usuario.rol == 'ADMIN' }">
+						<li class="nav-item"><a class="nav-link" href="admin/index">Administración</a></li>
+					</c:if>
 
-					<li id="menu-admin" class="nav-item"><a class="nav-link"
-						href="javascript:mostrar('login')">Cerrar sesión</a></li>
+					<c:if test="${sessionScope.usuario != null}">
+						<li class="nav-item"><a class="nav-link" href="#"
+							data-bs-toggle="offcanvas" data-bs-target="#prestados"
+							aria-controls="prestados">Libros prestados</a></li>
+
+						<li id="rol-usuario" class="navbar-text me-2">[${sessionScope.usuario.rol}]
+						</li>
+						<li id="usuario" class="navbar-text">${sessionScope.usuario.nombre}</li>
+					</c:if>
+
+					<c:choose>
+						<c:when test="${sessionScope.usuario == null}">
+							<li class="nav-item"><a class="nav-link" href="login">Iniciar
+									sesión</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link"
+								href="logout">Cerrar sesión</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>
 	</nav>
+	<c:if test="${alerta != null}">
+		<div class="alert alert-${nivel} alert-dismissible fade show"
+			role="alert">
+			${alerta}
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+	</c:if>
