@@ -33,10 +33,10 @@
 							<td>${l.genero}</td>
 							<td>${l.autor}</td>
 							<td>${l.prestatario.nombre}</td>
-							<td><a href="javascript:mostrar('formulario')"
+							<td><a href="admin/libro?id=${l.id}"
 								class="btn btn-sm btn-primary">Editar</a> <a
 								href="javascript:devolver()" class="btn btn-sm btn-warning">Devolver</a>
-								<a href="javascript:borrar()" class="btn btn-sm btn-danger">Borrar</a>
+								<a href="admin/libro?borrar&id=${l.id}" class="btn btn-sm btn-danger">Borrar</a>
 							</td>
 						</tr>
 					</c:forEach>
