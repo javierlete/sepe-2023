@@ -15,8 +15,12 @@ public class FabricaImpl implements Fabrica {
 
 			props.entrySet().stream().forEach(par -> {
 				try {
-					Class<?> interfaz = Class.forName((String) par.getKey());
-					Object objeto = Class.forName((String) par.getValue()).getConstructor().newInstance();
+					String clave = (String) par.getKey();
+					String valor = (String) par.getValue();
+
+					Class<?> interfaz = Class.forName(clave);
+					Object objeto = Class.forName(valor).getConstructor().newInstance();
+					
 					almacen.put(interfaz, objeto);
 				} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 						| IllegalArgumentException | InvocationTargetException | NoSuchMethodException
