@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Biblioteca</title>
+
+<base href="${pageContext.request.contextPath}/">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,6 +25,16 @@
 <script defer src="js/jquery.dataTables.min.js"></script>
 <script defer src="js/dataTables.bootstrap5.min.js"></script>
 
+<script defer>
+	window.addEventListener('DOMContentLoaded', function() {
+		new DataTable('#listado', {
+			language : {
+				url : 'json/es-ES.json',
+			},
+		});
+	});
+</script>
+
 <link href="imgs/book.svg" rel="icon">
 </head>
 
@@ -31,7 +43,7 @@
 	<nav class="navbar navbar-expand-lg bg-dark sticky-top"
 		data-bs-theme="dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <i 
+			<a class="navbar-brand" href="#"> <i
 				class="bi bi-book d-inline-block align-text-top"></i> Biblioteca
 			</a>
 			<button class="navbar-toggler" type="button"
@@ -42,12 +54,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link"
-						href="index">Principal</a></li>
+					<li class="nav-item"><a class="nav-link" href="index">Principal</a></li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0">
 					<li id="menu-admin" class="nav-item"><a class="nav-link"
-						href="javascript:mostrar('admin')">Administración</a></li>
+						href="admin/index">Administración</a></li>
 					<li id="menu-admin" class="nav-item"><a class="nav-link"
 						href="#" data-bs-toggle="offcanvas" data-bs-target="#prestados"
 						aria-controls="prestados">Libros prestados</a></li>
