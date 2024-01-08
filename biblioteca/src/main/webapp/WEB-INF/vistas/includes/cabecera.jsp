@@ -32,7 +32,15 @@
 				url : 'json/es-ES.json',
 			},
 		});
+		
+		if(document.querySelector('#modal-reserva')) {
+			new bootstrap.Modal('#modal-reserva').show();
+		}
+		
+		const offcanvasElementList = document.querySelectorAll('.offcanvas');
+		const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap.Offcanvas(offcanvasEl).show());
 	});
+	
 </script>
 
 <link href="imgs/book.svg" rel="icon">
@@ -62,9 +70,7 @@
 					</c:if>
 
 					<c:if test="${sessionScope.usuario != null}">
-						<li class="nav-item"><a class="nav-link" href="#"
-							data-bs-toggle="offcanvas" data-bs-target="#prestados"
-							aria-controls="prestados">Libros prestados</a></li>
+						<li class="nav-item"><a class="nav-link" href="prestados">Libros prestados</a></li>
 
 						<li id="rol-usuario" class="navbar-text me-2">[${sessionScope.usuario.rol}]
 						</li>

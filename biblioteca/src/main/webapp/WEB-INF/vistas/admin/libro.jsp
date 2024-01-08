@@ -28,7 +28,7 @@
 			<div class="row mb-3">
 				<label for="descripcion" class="col-sm-2 col-form-label">Descripción</label>
 				<div class="col-sm-10">
-					<textarea maxlength="2000" type="text" rows="5"
+					<textarea maxlength="2000" rows="5"
 						class="form-control" id="descripcion" name="descripcion">${libro.descripcion}</textarea>
 				</div>
 			</div>
