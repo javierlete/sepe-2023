@@ -15,7 +15,9 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,5 +52,7 @@ public class Persona {
 	private String rol;
 	
 	@OneToMany(mappedBy = "prestatario")
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
 	private Set<Libro> libros;
 }
