@@ -3,6 +3,7 @@ package com.biblioteca.servicios;
 import java.util.Set;
 
 import com.biblioteca.entidades.Libro;
+import com.biblioteca.entidades.Persona;
 import com.biblioteca.fabrica.Fabrica;
 import com.biblioteca.repositorios.LibroRepositorio;
 
@@ -33,4 +34,20 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
 		return libro;
 	}
+
+	@Override
+	public void agregarPrestamo(Persona persona, Libro libro) {
+		libro.setPrestatario(persona);
+		persona.getLibros().add(libro);
+		
+		// TODO Persistencia
+	}
+
+	@Override
+	public Set<Libro> listarPrestamos(Persona persona) {
+		// TODO Persistencia
+		
+		return persona.getLibros();
+	}
+
 }
