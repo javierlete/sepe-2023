@@ -18,4 +18,7 @@ public interface LibroRepository extends CrudRepository<Libro, Long>, PagingAndS
 	
 	@Query(nativeQuery = true, value = "SELECT * FROM libros WHERE titulo LIKE CONCAT('%', CONCAT(:texto, '%'))")
 	Set<Libro> buscarPorTituloNativeQuery(String texto);
+
+	@Query("from Libro l where l.prestatario.id = :idPersona")
+	Set<Libro> buscarPorPrestatario(Long idPersona);
 }
