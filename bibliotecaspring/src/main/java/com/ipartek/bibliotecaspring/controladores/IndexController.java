@@ -18,4 +18,11 @@ public class IndexController {
 		
 		return "index";
 	}
+	
+	@GetMapping("/detalle")
+	public String detalle(Model modelo, Long id) {
+		modelo.addAttribute("libro", servicio.verLibroBiblioteca(id));
+		
+		return "detalle";
+	}
 }
