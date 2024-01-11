@@ -12,7 +12,7 @@ public class IndexController {
 	@Autowired
 	private UsuarioServicio servicio;
 	
-	@GetMapping("/")
+	@GetMapping({"/", "/index"})
 	public String index(Model modelo) {
 		modelo.addAttribute("libros", servicio.listarLibrosBiblioteca());
 		
