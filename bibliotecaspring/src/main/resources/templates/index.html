@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Biblioteca</title>
+</head>
+<body>
+
+	<h1>Biblioteca</h1>
+	
+	<ul>
+		<li th:each="libro: ${libros}" th:object="${libro}">
+			<dl>
+				<dt>Id</dt>
+				<dd th:text="*{id}">1</dd>
+				<dt>Título</dt>
+				<dd th:text="*{titulo}">Superman</dd>
+				<dt>ISBN</dt>
+				<dd th:text="*{isbn}">123457890987</dd>
+				<dt>Género</dt>
+				<dd th:text="*{genero}">1</dd>
+				<dt>Autor</dt>
+				<dd th:text="*{autor}">1</dd>
+			</dl>
+		</li>
+	</ul>
+
+</body>
+</html>
