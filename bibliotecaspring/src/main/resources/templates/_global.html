@@ -64,18 +64,26 @@
 					<li class="nav-item"><a class="nav-link" href="index">Principal</a></li>
 				</ul>
 				<ul class="navbar-nav mb-2 mb-lg-0">
-					<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a class="nav-link" href="admin/index">Administración</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a
+						class="nav-link" href="admin/index">Administración</a></li>
 
 					<li class="nav-item"><a class="nav-link" href="prestados">Libros
 							prestados</a></li>
 
-					<li id="rol-usuario" class="navbar-text me-2" sec:authorize="isAuthenticated()" sec:authentication="principal.authorities">UN_ROL</li>
-					<li id="usuario" class="navbar-text" sec:authorize="isAuthenticated()" sec:authentication="name">Un usuario</li>
+					<li id="rol-usuario" class="navbar-text me-2"
+						sec:authorize="isAuthenticated()"
+						sec:authentication="principal.authorities">UN_ROL</li>
+					<li id="usuario" class="navbar-text"
+						sec:authorize="isAuthenticated()" sec:authentication="name">Un
+						usuario</li>
 
-					<li class="nav-item" sec:authorize="!isAuthenticated()"><a class="nav-link" href="login">Iniciar
-							sesión</a></li>
-					<li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link" href="logout">Cerrar
-							sesión</a></li>
+					<li class="nav-item" sec:authorize="!isAuthenticated()"><a
+						class="nav-link" href="login">Iniciar sesión</a></li>
+					<li class="nav-item" sec:authorize="isAuthenticated()">
+						<form th:action="@{/logout}" method="post">
+							<button class="nav-link" href="logout">Cerrar sesión</button>
+						</form>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -87,8 +95,8 @@
 			aria-label="Close"></button>
 	</div>
 
-	<main class="container" th:insert="${contenido}">CONTENIDO POR
-		DEFECTO</main>
+	<main class="container my-3" th:insert="${contenido}">CONTENIDO
+		POR DEFECTO</main>
 
 	<footer class="p-2 text-bg-dark d-flex justify-content-between">
 		<div>&copy;2023 Javier Lete</div>
