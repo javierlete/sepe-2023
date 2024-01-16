@@ -1,7 +1,5 @@
 package com.ipartek.bibliotecaspring.entidades;
 
-import org.hibernate.validator.constraints.EAN;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -45,7 +43,7 @@ public class Libro {
 	@Column(length = 13)
 	@Pattern(regexp = "^\\d{13}$")
 	@Size(max = 13)
-	@EAN
+	//@EAN
 	private String isbn;
 	
 	@Min(0)

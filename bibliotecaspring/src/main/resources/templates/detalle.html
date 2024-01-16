@@ -21,7 +21,7 @@
 						<h5 id="libro-titulo" class="card-title">[[${libro.titulo}]]</h5>
 						<p id="libro-descripcion" class="card-text">[[${libro.descripcion}]]</p>
 						<p>
-							<a href="reserva?id=${libro.id}" id="libro-reservar"
+							<a th:href="|reserva?id=${libro.id}|" id="libro-reservar"
 								class="btn btn-primary"> Reservar </a> <a href="index"
 								class="btn btn-secondary">Volver al listado</a>
 						</p>

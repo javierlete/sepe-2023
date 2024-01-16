@@ -44,8 +44,22 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	}
 
 	@Override
+	public void agregarPrestamo(String email, Long idLibro) {
+		Libro libro = repoLibro.findById(idLibro).orElse(null);
+		Persona persona = repoPersona.findByEmail(email);
+				
+		libro.setPrestatario(persona);
+		
+		repoLibro.save(libro);
+	}
+
+	@Override
 	public Set<Libro> listarPrestamos(Long idPersona) {
 		return repoLibro.buscarPorPrestatario(idPersona);
 	}
-
+	
+	@Override
+	public Set<Libro> listarPrestamos(String email) {
+		return repoLibro.buscarPorPrestatario(email);
+	}
 }

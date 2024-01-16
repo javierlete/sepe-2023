@@ -1,49 +1,69 @@
 <!DOCTYPE html>
 
-<html th:replace="~{_global :: plantilla(~{::title}, ~{::#contenido})}" xmlns:th="http://www.thymeleaf.org" lang="es">
+<html th:replace="~{_global :: plantilla(~{::title}, ~{::#contenido})}"
+	xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
 <title>Biblioteca</title>
 </head>
 
 <body>
 	<main>
-		<div id="contenido"
-			class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4">
-			<!-- row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 -->
+		<div id="contenido">
+			<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4">
+				<!-- row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 row-cols-xxl-6 -->
 
 
-			<div th:each="l: ${libros}" class="col">
-				<div class="card h-100 mb-3">
-					<div class="row g-0">
-						<div class="col-4">
-							<img th:src="|https://picsum.photos/500/800?${l.id}|"
-								class="img-fluid rounded-start" alt="...">
-						</div>
-						<div class="col-8 mb-3">
-							<div class="card-body">
-								<h5 th:text="${l.titulo}" class="card-title">${l.titulo}</h5>
-								<ul class="list-group list-group-flush">
-									<li th:text="|Autor: ${l.autor}|" class="list-group-item">Autor:
-										${l.autor}</li>
-									<li th:text="|Género: ${l.genero}|" class="list-group-item">Género:
-										${l.genero}</li>
-								</ul>
-								<p class="card-text">
-									<small th:text="|${l.unidades} libros
+				<div th:each="l: ${libros}" class="col">
+					<div class="card h-100 mb-3">
+						<div class="row g-0">
+							<div class="col-4">
+								<img th:src="|https://picsum.photos/500/800?${l.id}|"
+									class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-8 mb-3">
+								<div class="card-body">
+									<h5 th:text="${l.titulo}" class="card-title">${l.titulo}</h5>
+									<ul class="list-group list-group-flush">
+										<li th:text="|Autor: ${l.autor}|" class="list-group-item">Autor:
+											${l.autor}</li>
+										<li th:text="|Género: ${l.genero}|" class="list-group-item">Género:
+											${l.genero}</li>
+									</ul>
+									<p class="card-text">
+										<small th:text="|${l.unidades} libros
 									disponibles|"
-										class="text-body-secondary">${l.unidades} libros
-										disponibles</small>
-								</p>
-								<p class="card-text">
-									<small th:text="${l.isbn}" class="text-body-secondary">${l.isbn}</small>
-								</p>
+											class="text-body-secondary">${l.unidades} libros
+											disponibles</small>
+									</p>
+									<p class="card-text">
+										<small th:text="${l.isbn}" class="text-body-secondary">${l.isbn}</small>
+									</p>
+								</div>
+							</div>
+							<div class="col-12 position-absolute bottom-0">
+								<a class="w-100 stretched-link btn btn-primary"
+									th:href="|detalle?id=${l.id}|">Ver más información</a>
 							</div>
 						</div>
-						<div class="col-12 position-absolute bottom-0">
-							<a class="w-100 stretched-link btn btn-primary"
-								th:href="|detalle?id=${l.id}|">Ver más información</a>
-						</div>
 					</div>
+				</div>
+
+			</div>
+
+
+			<div th:if="${prestados != null}" class="offcanvas offcanvas-end"
+				tabindex="-1" id="prestados" aria-labelledby="offcanvasRightLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasRightLabel">Libros
+						prestados</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="list-group">
+						<li th:each="p: ${prestados}" class="list-group-item"
+							th:text="${p.titulo}">An item</li>
+					</ul>
 				</div>
 			</div>
 		</div>
