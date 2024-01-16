@@ -29,5 +29,14 @@ public class AdminServicioImpl extends UsuarioServicioImpl implements AdminServi
 	public void bajaLibro(Long id) {
 		repoLibro.deleteById(id);
 	}
+
+	@Override
+	public void devolverLibro(Long id) {
+		Libro libro = repoLibro.findById(id).orElse(null);
+		
+		libro.setPrestatario(null);
+		
+		repoLibro.save(libro);
+	}
 	
 }

@@ -6,4 +6,5 @@ public interface AdminServicio extends UsuarioServicio {
 	Libro altaLibro(Libro libro);
 	Libro modificarLibro(Libro libro);
 	void bajaLibro(Long id);
+	void devolverLibro(Long id);
 }

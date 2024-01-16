@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ipartek.bibliotecaspring.entidades.Libro;
 import com.ipartek.bibliotecaspring.servicios.AdminServicio;
@@ -66,8 +65,9 @@ public class AdminController {
 	}
 
 	@GetMapping("/libro/devolver/{id}")
-	@ResponseBody
 	public String devolver(@PathVariable Long id) {
-		return "DEVOLVER ID: " + id;
+		servicio.devolverLibro(id);
+		
+		return "redirect:/admin/index";
 	}
 }
