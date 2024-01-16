@@ -38,5 +38,10 @@ public class AdminServicioImpl extends UsuarioServicioImpl implements AdminServi
 		
 		repoLibro.save(libro);
 	}
+
+	@Override
+	public Iterable<Libro> listadoLibrosCompleto() {
+		return repoLibro.findAll();
+	}
 	
 }

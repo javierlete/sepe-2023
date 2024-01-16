@@ -24,4 +24,7 @@ public interface LibroRepository extends CrudRepository<Libro, Long>, PagingAndS
 
 	@Query("from Libro l where l.prestatario.email = :email")
 	Set<Libro> buscarPorPrestatario(String email);
+
+	@Query("from Libro l where l.prestatario is null")
+	Iterable<Libro> buscarDisponibles();
 }

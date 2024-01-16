@@ -23,7 +23,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 	@Override
 	public Set<Libro> listarLibrosBiblioteca() {
 		var libros = new HashSet<Libro>();
-		repoLibro.findAll().forEach(l -> libros.add(l));
+		repoLibro.buscarDisponibles().forEach(l -> libros.add(l));
 		
 		return libros;
 	}

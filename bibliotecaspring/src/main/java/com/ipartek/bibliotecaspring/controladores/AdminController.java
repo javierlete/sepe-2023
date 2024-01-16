@@ -22,7 +22,7 @@ public class AdminController {
 
 	@GetMapping("/index")
 	public String index(Model modelo) {
-		modelo.addAttribute("libros", servicio.listarLibrosBiblioteca());
+		modelo.addAttribute("libros", servicio.listadoLibrosCompleto());
 
 		return "admin/index";
 	}
